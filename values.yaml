@@ -1,8 +1,8 @@
-replicaCount: 1
+replicaCount: 2
 
 image:
   repository: nginx
-  tag: stable
+  tag: "1.25.3"
   pullPolicy: IfNotPresent
 
 service:
@@ -11,8 +11,9 @@ service:
 
 ingress:
   enabled: true
-  className: ""
-  annotations: {}
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
     - host: helm-app.local
       paths:
@@ -20,7 +21,13 @@ ingress:
           pathType: Prefix
   tls: []
 
-resources: {}
+resources:
+  limits:
+    cpu: "500m"
+    memory: "256Mi"
+  requests:
+    cpu: "200m"
+    memory: "128Mi"
 
 nodeSelector: {}
 
