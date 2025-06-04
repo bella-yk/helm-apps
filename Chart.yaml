@@ -1,6 +1,6 @@
 apiVersion: v2
-name: helm-app
-description: A Helm chart for Kubernetes web service
+name: bella-service
+description: A Helm chart for Bella Service
 type: application
 version: 0.1.0
 appVersion: "1.0"
